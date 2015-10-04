@@ -1,12 +1,13 @@
 package com.company;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 
 /**
  * Created by например Андрей on 04.10.2015.
  */
-public class State {
+public class State implements Cloneable {
 
     private Integer[][] data;
 
@@ -16,10 +17,6 @@ public class State {
 
     public Integer[][] getData() {
         return data;
-    }
-
-    public void setData(Integer[][] data) {
-        this.data = data;
     }
 
     public Coordinates getZeroCoordinates() throws Exception {
@@ -59,4 +56,19 @@ public class State {
     public int hashCode() {
         return Arrays.deepHashCode(data);
     }
+
+    @Override
+    public Object clone() {
+        Integer[][] data = this.getData();
+
+        if (data == null)
+            return null;
+        Integer[][] result = new Integer[data.length][];
+        for (int r = 0; r < data.length; r++) {
+            result[r] = data[r].clone();
+        }
+        return new State(result);
+    }
+
+
 }

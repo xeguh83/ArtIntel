@@ -142,4 +142,22 @@ public class MoveTest {
         assertEquals(stateForCheck, changedState);
     }
 
+    @Test
+    public void shouldStateNotChangedWhileRotating() throws Exception {
+        State state = new State(new Integer[][] {
+                {1, 4, 2},
+                {3, 0, 5},
+                {6, 7, 8}
+        });
+        State changedState = Move.RIGHT_ROTATE.rotate(state);
+
+        State stateForCheck = new State(new Integer[][] {
+                {1, 4, 2},
+                {3, 0, 5},
+                {6, 7, 8}
+        });
+
+        assertEquals(stateForCheck, state);
+    }
+
 }

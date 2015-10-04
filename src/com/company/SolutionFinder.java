@@ -9,13 +9,14 @@ import java.util.List;
  */
 public class SolutionFinder {
 
-    public Solution generalSearch(Problem problem, Strategy strategy) {
+    public Solution generalSearch(Problem problem, Strategy strategy) throws Exception {
 
-        List<State> list = new ArrayList<State>();
-
-
-
-
+        List<State> stackList = new ArrayList<State>();
+        State rootState = problem.getStartState();
+        List<Move> availableMoves = MoveRuler.getAvailableMoves(rootState);
+        for (int i = 0; i < availableMoves.size(); i++) {
+//            availableMoves.get(i).rotate(State)
+        }
 
 
         return new Solution();

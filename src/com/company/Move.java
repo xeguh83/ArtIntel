@@ -5,7 +5,8 @@ package com.company;
  */
 public enum Move {
     RIGHT_ROTATE {
-        public State rotate(State state) throws Exception {
+        public State rotate(final State originalState) throws Exception {
+            State state = (State) originalState.clone();
             Coordinates coord = state.getZeroCoordinates();
             Integer[][] data = state.getData();
             Integer currentPoint = new Integer(data[coord.getJ()][coord.getI()]);
@@ -16,7 +17,8 @@ public enum Move {
     },
 
     LEFT_ROTATE {
-        public State rotate(State state) throws Exception {
+        public State rotate(final State originalState) throws Exception {
+            State state = (State) originalState.clone();
             Coordinates coord = state.getZeroCoordinates();
             Integer[][] data = state.getData();
             Integer currentPoint = new Integer(data[coord.getJ()][coord.getI()]);
@@ -27,7 +29,8 @@ public enum Move {
     },
 
     DOWN_ROTATE {
-        public State rotate(State state) throws Exception {
+        public State rotate(final State originalState) throws Exception {
+            State state = (State) originalState.clone();
             Coordinates coord = state.getZeroCoordinates();
             Integer[][] data = state.getData();
             Integer currentPoint = new Integer(data[coord.getJ()][coord.getI()]);
@@ -37,7 +40,8 @@ public enum Move {
         }
     },
     UP_ROTATE {
-        public State rotate(State state) throws Exception {
+        public State rotate(final State originalState) throws Exception {
+            State state = (State) originalState.clone();
             Coordinates coord = state.getZeroCoordinates();
             Integer[][] data = state.getData();
             Integer currentPoint = new Integer(data[coord.getJ()][coord.getI()]);
@@ -47,6 +51,6 @@ public enum Move {
         }
     };
 
-    public abstract State rotate(State state) throws Exception;
+    public abstract State rotate(final State state) throws Exception;
 
 }
