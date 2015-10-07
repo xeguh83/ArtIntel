@@ -9,23 +9,34 @@ import java.util.Arrays;
 public class State {
 
     private int[][] data;
-    private Coordinates zeroCoordinates;
+    private Coordinates zero;
+    private State parent = null;
 
-    public State(int[][] data, Coordinates zeroCoordinates) {
+
+    public State(int[][] data, Coordinates zero) {
         this.data = new int[Global.MATRIX_SIZE][];
         for (int i = 0; i < data.length; i++) {
             this.data[i] = new int[Global.MATRIX_SIZE];
             System.arraycopy( data[i], 0, this.data[i], 0, data[i].length );
         }
-        this.zeroCoordinates = zeroCoordinates;
+        this.zero = zero;
+    }
+
+    public State(State parent) {
+        this(parent.getData(), parent.getZero());
+        this.parent = parent;
+    }
+
+    public State getParent() {
+        return parent;
     }
 
     public int[][] getData() {
         return data;
     }
 
-    public Coordinates getZeroCoordinates() {
-        return zeroCoordinates;
+    public Coordinates getZero() {
+        return zero;
     }
 
     @Override
@@ -49,6 +60,35 @@ public class State {
         return Arrays.deepHashCode(data);
     }
 
+    public State swapLeft() {
+        int temp = data[zero.getJ()][zero.getI()];
+        data[zero.getJ()][zero.getI()] = data[zero.getJ()][zero.getI() - 1];
+        data[zero.getJ()][zero.getI() - 1] = temp;
+        zero.setI(zero.getI() - 1);
+        return this;
+    }
 
+    public State swapRight() {
+        int temp = data[zero.getJ()][zero.getI()];
+        data[zero.getJ()][zero.getI()] = data[zero.getJ()][zero.getI() + 1];
+        data[zero.getJ()][zero.getI() + 1] = temp;
+        zero.setI(zero.getI() + 1);
+        return this;
+    }
 
+    public State swapDown() {
+        int temp = data[zero.getJ()][zero.getI()];
+        data[zero.getJ()][zero.getI()] = data[zero.getJ() + 1][zero.getI()];
+        data[zero.getJ() + 1][zero.getI()] = temp;
+        zero.setJ(zero.getJ() + 1);
+        return this;
+    }
+
+    public State swapUp() {
+        int temp = data[zero.getJ()][zero.getI()];
+        data[zero.getJ()][zero.getI()] = data[zero.getJ() - 1][zero.getI()];
+        data[zero.getJ() - 1][zero.getI()] = temp;
+        zero.setJ(zero.getJ() - 1);
+        return this;
+    }
 }
