@@ -1,33 +1,31 @@
 package com.company;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 
 /**
  * Created by например Андрей on 04.10.2015.
  */
-public class State implements Cloneable {
+public class State {
 
-    private Integer[][] data;
+    private int[][] data;
+    private Coordinates zeroCoordinates;
 
-    public State(Integer[][] data) {
-        this.data = data;
+    public State(int[][] data, Coordinates zeroCoordinates) {
+        this.data = new int[Global.MATRIX_SIZE][];
+        for (int i = 0; i < data.length; i++) {
+            this.data[i] = new int[Global.MATRIX_SIZE];
+            System.arraycopy( data[i], 0, this.data[i], 0, data[i].length );
+        }
+        this.zeroCoordinates = zeroCoordinates;
     }
 
-    public Integer[][] getData() {
+    public int[][] getData() {
         return data;
     }
 
-    public Coordinates getZeroCoordinates() throws Exception {
-        for (int j = 0; j < data.length; j++) {
-            for (int i = 0; i < data[j].length; i++) {
-                if (Integer.valueOf(0).equals(data[j][i])) {
-                    return new Coordinates(i,j);
-                }
-            }
-        }
-        throw new Exception("There is no zero point in state");
+    public Coordinates getZeroCoordinates() {
+        return zeroCoordinates;
     }
 
     @Override
@@ -43,13 +41,7 @@ public class State implements Cloneable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for (int j = 0; j < data.length ; j++) {
-            sb.append(Arrays.toString(data[j]));
-        }
-        return "State{" +
-                "data=" + sb.toString() +
-                '}';
+        return Arrays.deepToString(data);
     }
 
     @Override
@@ -57,18 +49,6 @@ public class State implements Cloneable {
         return Arrays.deepHashCode(data);
     }
 
-    @Override
-    public Object clone() {
-        Integer[][] data = this.getData();
-
-        if (data == null)
-            return null;
-        Integer[][] result = new Integer[data.length][];
-        for (int r = 0; r < data.length; r++) {
-            result[r] = data[r].clone();
-        }
-        return new State(result);
-    }
 
 
 }

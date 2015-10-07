@@ -5,27 +5,32 @@ package com.company;
  */
 public class Coordinates {
 
-    private Integer i;
-    private Integer j;
+    private int x;
+    private int y;
 
-    public Coordinates(Integer i, Integer j) {
-        this.i = i;
-        this.j = j;
+    public Coordinates(Coordinates anotherCoordinates) {
+        this.x = anotherCoordinates.getX();
+        this.y = anotherCoordinates.getY();
     }
 
-    public Integer getI() {
-        return i;
+    public Coordinates(final int xCoordinate,final int yCoordinate) {
+        this.x = xCoordinate;
+        this.y = yCoordinate;
     }
 
-    public void setI(Integer i) {
-        this.i = i;
+    public int getX() {
+        return x;
     }
 
-    public Integer getJ() {
-        return j;
+    public void setX(int x) {
+        this.x = x;
     }
 
-    public void setJ(Integer j) {
-        this.j = j;
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 }
