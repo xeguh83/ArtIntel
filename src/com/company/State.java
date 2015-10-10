@@ -19,7 +19,7 @@ public class State {
             this.data[i] = new int[Global.MATRIX_SIZE];
             System.arraycopy( data[i], 0, this.data[i], 0, data[i].length );
         }
-        this.zero = zero;
+        this.zero = new Coordinates(zero);
     }
 
     public State(State parent) {

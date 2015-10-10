@@ -7,22 +7,25 @@ public class Main {
     public static void main(String[] args) throws Exception {
         long startTime = System.nanoTime();
         State startState = new State(new int[][]{
-                {4, 5, 6},
-                {3, 2, 0},
-                {7, 1, 8}
-        }, new Coordinates(2, 1));
+                {6, 0, 8},
+                {5, 2, 1},
+                {4, 3, 7}
+        }, new Coordinates(1, 0));
 
         State endState = new State(new int[][]{
                 {1, 2, 3},
-                {4, 5, 6},
-                {7, 8, 0}
-        }, new Coordinates(2, 2));
+                {8, 0, 4},
+                {7, 6, 5}
+        }, new Coordinates(1, 1));
 
         Problem problem = new Problem(startState, endState);
 
         List<State> solution = new SolutionFinder().generalSearch(problem, new Strategy());
-        if (solution == null) {
+        if (solution.isEmpty()) {
+            long endTime = System.nanoTime();
+            long duration = (endTime - startTime);
             System.out.println("There is no solution for this task");
+            System.out.println("It takes " + (duration / 1000000) + "ms");
         } else {
             long endTime = System.nanoTime();
             long duration = (endTime - startTime);

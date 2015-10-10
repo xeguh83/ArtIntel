@@ -33,4 +33,31 @@ public class Coordinates {
     public void setJ(int j) {
         this.j = j;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Coordinates that = (Coordinates) o;
+
+        if (i != that.i) return false;
+        return j == that.j;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = i;
+        result = 31 * result + j;
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Coordinates{" +
+                "i=" + i +
+                ", j=" + j +
+                '}';
+    }
 }

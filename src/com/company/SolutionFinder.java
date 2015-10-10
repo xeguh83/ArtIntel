@@ -25,8 +25,7 @@ public class SolutionFinder {
             }
             tree.addChildrenToStack(currentState);
         }
-        //TODO реализовать что делать при отсутствии решений
-        return null;
+        return new LinkedList<State>();
 
 
     }
