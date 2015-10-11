@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.logic.*;
+
 import java.util.List;
 
 public class Main {

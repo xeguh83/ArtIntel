@@ -1,4 +1,4 @@
-package com.company;
+package com.company.logic;
 
 /**
  * Created by например Андрей on 07.10.2015.

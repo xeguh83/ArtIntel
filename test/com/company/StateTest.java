@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.logic.Coordinates;
+import com.company.logic.State;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
