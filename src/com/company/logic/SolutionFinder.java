@@ -5,11 +5,11 @@ import java.util.List;
 
 
 /**
- * Created by например Андрей on 04.10.2015.
+ * Created by пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ on 04.10.2015.
  */
 public class SolutionFinder {
 
-    public List<State> generalSearch(Problem problem, Strategy strategy) throws Exception {
+    public LinkedList<State> generalSearch(Problem problem, Strategy strategy) throws Exception {
 
         TreeOfStates tree = new TreeOfStates(problem.getStartState());
         while (tree.getStackToWatch().size() != 0) {
