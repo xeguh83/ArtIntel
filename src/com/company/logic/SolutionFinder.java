@@ -9,11 +9,14 @@ import java.util.List;
  */
 public class SolutionFinder {
 
+    private long step = 0;
+
     public LinkedList<State> generalSearch(Problem problem, Strategy strategy) throws Exception {
 
         TreeOfStates tree = new TreeOfStates(problem.getStartState());
         while (tree.getStackToWatch().size() != 0) {
             State currentState = tree.getStackToWatch().poll();
+            step++;
             if (currentState.equals(problem.getEndState())) {
                 LinkedList<State> solutionList = new LinkedList<>();
                 solutionList.push(currentState);
@@ -28,6 +31,10 @@ public class SolutionFinder {
         return new LinkedList<State>();
 
 
+    }
+
+    public long getStep(){
+        return step;
     }
 
 }

@@ -18,6 +18,19 @@ public class Coordinates {
         this.j = yCoordinate;
     }
 
+    public Coordinates(final int[][] data) throws NumberFormatException {
+        for (int j = 0; j < data.length; j++) {
+            for (int i = 0; i < data[j].length; i++) {
+                if (data[j][i] == 0){
+                    this.i = i;
+                    this.j = j;
+                    return;
+                }
+            }
+        }
+        throw new NumberFormatException("There is no 0 in data array");
+    }
+
     public int getI() {
         return i;
     }

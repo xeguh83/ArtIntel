@@ -2,27 +2,36 @@ package com.company;
 
 import com.company.logic.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        long startTime = System.nanoTime();
-        State startState = new State(new int[][]{
-                {6, 0, 8},
-                {5, 2, 1},
-                {4, 3, 7}
-        }, new Coordinates(1, 0));
 
-        State endState = new State(new int[][]{
-                {1, 2, 3},
-                {8, 0, 4},
-                {7, 6, 5}
-        }, new Coordinates(1, 1));
+        JSONLoader loader = new JSONLoader();
+        String strategy = loader.getStrategy();
+        int[][] startData = loader.getStartData();
+        int[][] endData = loader.getEndData();
+        String string1 = Arrays.deepToString(startData);
+        String string2 = Arrays.deepToString(endData);
+        State startState = new State(startData, new Coordinates(startData));
+        //               {6, 0, 8},
+        //               {5, 2, 1},
+        //              {4, 3, 7}
+
+
+        State endState = new State(endData, new Coordinates(endData));
+//                {1, 2, 3},
+//                {8, 0, 4},
+//                {7, 6, 5}
+
 
         Problem problem = new Problem(startState, endState);
 
-        List<State> solution = new SolutionFinder().generalSearch(problem, new Strategy());
+        long startTime = System.nanoTime();
+        SolutionFinder solutionFinder = new SolutionFinder();
+        List<State> solution = solutionFinder.generalSearch(problem, new Strategy());
         if (solution.isEmpty()) {
             long endTime = System.nanoTime();
             long duration = (endTime - startTime);
@@ -31,7 +40,7 @@ public class Main {
         } else {
             long endTime = System.nanoTime();
             long duration = (endTime - startTime);
-            System.out.println("Has solution with " + solution.size() + " steps");
+            System.out.println("Has solution with " + solution.size() + " steps. It takes " + solutionFinder.getStep() + " steps to find");
             System.out.println("It takes " + (duration / 1000000) + "ms");
 
         }
