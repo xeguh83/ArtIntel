@@ -7,7 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Created by например Андрей on 10.10.2015.
+ * Created by пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ on 10.10.2015.
  */
 public class StateTest {
 
@@ -103,8 +103,8 @@ public class StateTest {
                 {7,8,9}
         };
         State fixture = new State(data, new Coordinates(1, 1));
-        State afterLeftSwap = new State(fixture).swapRight();
-        assertEquals(new Coordinates(2,1), afterLeftSwap.getZero());
+        State afterRightSwap = new State(fixture).swapRight();
+        assertEquals(new Coordinates(2, 1), afterRightSwap.getZero());
     }
 
     @Test
@@ -115,8 +115,8 @@ public class StateTest {
                 {7,8,9}
         };
         State fixture = new State(data, new Coordinates(1, 1));
-        State afterLeftSwap = new State(fixture).swapDown();
-        assertEquals(new Coordinates(1,2), afterLeftSwap.getZero());
+        State afterDownSwap = new State(fixture).swapDown();
+        assertEquals(new Coordinates(1, 2), afterDownSwap.getZero());
     }
 
     @Test
@@ -127,7 +127,7 @@ public class StateTest {
                 {7,8,9}
         };
         State fixture = new State(data, new Coordinates(1, 1));
-        State afterLeftSwap = new State(fixture).swapUp();
-        assertEquals(new Coordinates(1,1), afterLeftSwap.getZero());
+        State afterUpSwap = new State(fixture).swapUp();
+        assertEquals(new Coordinates(1, 0), afterUpSwap.getZero());
     }
 }

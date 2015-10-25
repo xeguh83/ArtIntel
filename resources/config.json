@@ -1,0 +1,7 @@
+{
+  "_comment_strategy": "Method of search. Can be dfs (depth first search), dsws (double-side width search)",
+  "strategy": "dfs"
+  "data" : [
+    
+  ]
+}
