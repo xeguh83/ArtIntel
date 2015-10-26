@@ -41,7 +41,7 @@ public class JSONLoader {
         return getData("enddata");
     }
 
-    public int[][] getData(String dataName) {
+    private int[][] getData(String dataName) {
         int[][] data = new int[3][3];
         List list = (List) jsonObject.get(dataName);
         for (int j = 0; j < list.size(); j++) {

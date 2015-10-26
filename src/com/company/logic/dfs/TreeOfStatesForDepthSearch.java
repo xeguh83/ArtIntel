@@ -1,5 +1,9 @@
-package com.company.logic;
+package com.company.logic.dfs;
 
+
+import com.company.logic.Coordinates;
+import com.company.logic.Global;
+import com.company.logic.State;
 
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -8,12 +12,12 @@ import java.util.Set;
 /**
  * Created by например Андрей on 07.10.2015.
  */
-public class TreeOfStates {
+public class TreeOfStatesForDepthSearch {
 
     private Set<State> watchedTree;
     private LinkedList<State> stackToWatch;
 
-    public TreeOfStates(State rootState) {
+    public TreeOfStatesForDepthSearch(State rootState) {
         watchedTree = new HashSet<>();
         watchedTree.add(rootState);
 

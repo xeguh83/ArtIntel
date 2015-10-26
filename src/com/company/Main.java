@@ -13,8 +13,6 @@ public class Main {
         String strategy = loader.getStrategy();
         int[][] startData = loader.getStartData();
         int[][] endData = loader.getEndData();
-        String string1 = Arrays.deepToString(startData);
-        String string2 = Arrays.deepToString(endData);
         State startState = new State(startData, new Coordinates(startData));
         //               {6, 0, 8},
         //               {5, 2, 1},
@@ -31,7 +29,7 @@ public class Main {
 
         long startTime = System.nanoTime();
         SolutionFinder solutionFinder = new SolutionFinder();
-        List<State> solution = solutionFinder.generalSearch(problem, new Strategy());
+        List<State> solution = solutionFinder.generalSearch(problem, strategy);
         if (solution.isEmpty()) {
             long endTime = System.nanoTime();
             long duration = (endTime - startTime);
